@@ -2,12 +2,15 @@ import '@mantine/core/styles.css';
 import React from 'react';
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 import { theme } from '../theme';
+import Providers from '@/components/Providers';
+import ToastProvider from '@/components/ToastProvider/toast.provider';
 
 export const metadata = {
   title: 'Mantine Next.js template',
   description: 'I am using Mantine with Next.js!',
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function RootLayout({ children }: { children: any }) {
   return (
     <html lang="en">
@@ -20,7 +23,11 @@ export default function RootLayout({ children }: { children: any }) {
         />
       </head>
       <body>
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+        <Providers>
+          <ToastProvider>
+            <MantineProvider theme={theme}>{children}</MantineProvider>
+          </ToastProvider>
+        </Providers>
       </body>
     </html>
   );
