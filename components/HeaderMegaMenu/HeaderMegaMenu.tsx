@@ -17,6 +17,7 @@ import { IconShoppingCart } from '@tabler/icons-react';
 import classes from './HeaderMegaMenu.module.css';
 import { LogInButton } from '../LogInButton/LogInButton';
 import { useSession } from 'next-auth/react';
+import { ThemeChangerIconButton } from '../ThemeChangerIconButton/ThemeChangerIconButton';
 
 export function HeaderMegaMenu() {
   const { data: session } = useSession();
@@ -49,6 +50,7 @@ export function HeaderMegaMenu() {
           <Group visibleFrom="sm">
             <LogInButton />
             {!session?.user?.email && <Button>Sign up</Button>}
+            <ThemeChangerIconButton />
           </Group>
 
           <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="sm" />
@@ -85,9 +87,14 @@ export function HeaderMegaMenu() {
           <Divider my="sm" />
 
           <Group justify="center" grow pb="xl" px="md">
-            <Button variant="default">Log in</Button>
+            <LogInButton />
             {!session?.user?.email && <Button>Sign up</Button>}
           </Group>
+          <Divider my="sm" />
+
+          <Center>
+            <ThemeChangerIconButton />
+          </Center>
         </ScrollArea>
       </Drawer>
     </Box>
