@@ -19,12 +19,14 @@
     "storybook:build": "storybook build"
   },
   "dependencies": {
+    "@mantine/carousel": "^7.5.1",
     "@mantine/core": "7.5.1",
     "@mantine/form": "^7.5.1",
     "@mantine/hooks": "7.5.1",
     "@mantinex/mantine-logo": "^1.0.1",
     "@next/bundle-analyzer": "^14.0.1",
     "@tabler/icons-react": "^2.40.0",
+    "embla-carousel-react": "^8.0.0-rc22",
     "next": "14.0.1",
     "next-auth": "^4.24.5",
     "react": "18.2.0",
