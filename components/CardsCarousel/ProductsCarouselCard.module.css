@@ -16,7 +16,9 @@
 }
 
 .carouselIndicator {
-    width: rem(4px);
+    opacity: 0.5;
+    background-color: white;
+    width: rem(8px);
     height: rem(4px);
     transition: width 250ms ease;
 

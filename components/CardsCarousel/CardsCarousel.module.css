@@ -25,3 +25,16 @@
     font-weight: 700;
     text-transform: uppercase;
 }
+
+.carousel {
+    @mixin hover {
+        .carouselControls {
+            opacity: 1;
+        }
+    }
+}
+
+.carouselControls {
+    transition: opacity 150ms ease;
+    opacity: 0.5;
+}

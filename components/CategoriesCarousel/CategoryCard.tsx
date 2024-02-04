@@ -4,11 +4,10 @@ import classes from './CategoryCard.module.css';
 
 interface CardProps {
   image: string;
-  title: string;
-  category: string;
+  name: string;
 }
 
-export function CategoryCard({ image, title, category }: CardProps) {
+export function CategoryCard({ image, name }: CardProps) {
   return (
     <Paper
       shadow="md"
@@ -19,14 +18,14 @@ export function CategoryCard({ image, title, category }: CardProps) {
     >
       <div>
         <Text className={classes.category} size="xs">
-          {category}
+          Category:
         </Text>
         <Title order={3} className={classes.title}>
-          {title}
+          {name}
         </Title>
       </div>
       <Button variant="white" color="dark">
-        Read article
+        Go to store
       </Button>
     </Paper>
   );
