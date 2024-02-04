@@ -21,7 +21,7 @@ export default function Form() {
   });
 
   return (
-    <Box maw={340} mx="auto" mt={'7rem'}>
+    <Box maw={340} mx="auto">
       <form
         onSubmit={form.onSubmit(async (values, e) => {
           e?.preventDefault();

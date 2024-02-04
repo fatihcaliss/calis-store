@@ -1,16 +1,18 @@
-// import { Welcome } from '../components/Welcome/Welcome';
-// import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
-import { HeaderMegaMenu } from '@/components/HeaderMegaMenu/HeaderMegaMenu';
 import { CardsCarousel } from '@/components/CardsCarousel/CardsCarousel';
+import { CategoriesCarousel } from '@/components/CategoriesCarousel/CategoriesCarousel';
 import { Container } from '@mantine/core';
 
 export default function HomePage() {
   return (
     <>
-      <HeaderMegaMenu />
-      <Container size="md">
+      <Container size="lg">
         <CardsCarousel />
       </Container>
+
+      <Container size="lg" mt={'6rem'} mb={'6rem'}>
+        <CategoriesCarousel />
+      </Container>
+
       {/* <Welcome /> */}
       {/* <ColorSchemeToggle /> */}
     </>

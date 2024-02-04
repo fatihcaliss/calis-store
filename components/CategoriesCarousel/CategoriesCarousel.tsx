@@ -2,7 +2,7 @@
 import { Carousel } from '@mantine/carousel';
 import { useMediaQuery } from '@mantine/hooks';
 import { useMantineTheme, rem } from '@mantine/core';
-import { ProductCarouselCard } from './ProductCarouselCard';
+import { CategoryCard } from './CategoryCard';
 
 const data = [
   {
@@ -43,26 +43,26 @@ const data = [
   },
 ];
 
-export function CardsCarousel() {
+export function CategoriesCarousel() {
   const theme = useMantineTheme();
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
   const slides = data.map((item) => (
     <Carousel.Slide key={item.title}>
-      <ProductCarouselCard />
+      <CategoryCard {...item} />
     </Carousel.Slide>
   ));
 
   return (
     <Carousel
-      slideSize={{ base: '100%', sm: '500px' }}
+      slideSize={{ base: '100%', sm: '350px' }}
       slideGap={{ base: rem(2), sm: 'xl' }}
-      align="center"
       nextControlProps={{
         style: { opacity: 1, backgroundColor: 'white', width: '36px', height: '36px' },
       }}
       previousControlProps={{
         style: { opacity: 1, backgroundColor: 'white', width: '36px', height: '36px' },
       }}
+      align="center"
       slidesToScroll={mobile ? 1 : 1}
       loop
       dragFree

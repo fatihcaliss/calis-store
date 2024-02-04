@@ -34,6 +34,9 @@ export function HeaderMegaMenu() {
             <a href="/" className={classes.link}>
               Home
             </a>
+            <a href="/products" className={classes.link}>
+              Store
+            </a>
             <a href="#" className={classes.link}>
               <Center inline>
                 <Box component="span" mr={5}>
@@ -71,6 +74,9 @@ export function HeaderMegaMenu() {
 
           <a href="/" className={classes.link}>
             Home
+          </a>
+          <a href="/products" className={classes.link}>
+            Store
           </a>
           <a href="#" className={classes.link}>
             <Center inline>

@@ -5,9 +5,10 @@ import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 import { theme } from '../theme';
 import Providers from '@/components/Providers';
 import ToastProvider from '@/components/ToastProvider/toast.provider';
+import { HeaderMegaMenu } from '@/components/HeaderMegaMenu/HeaderMegaMenu';
 
 export const metadata = {
-  title: 'Mantine Next.js template',
+  title: 'CaliStore',
   description: 'I am using Mantine with Next.js!',
 };
 
@@ -26,7 +27,10 @@ export default function RootLayout({ children }: { children: any }) {
       <body>
         <Providers>
           <ToastProvider>
-            <MantineProvider theme={theme}>{children}</MantineProvider>
+            <MantineProvider theme={theme}>
+              <HeaderMegaMenu />
+              {children}
+            </MantineProvider>
           </ToastProvider>
         </Providers>
       </body>
