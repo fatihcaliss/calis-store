@@ -6,6 +6,7 @@ import { theme } from '../theme';
 import Providers from '@/components/Providers';
 import ToastProvider from '@/components/ToastProvider/toast.provider';
 import { HeaderMegaMenu } from '@/components/HeaderMegaMenu/HeaderMegaMenu';
+import { ReactQueryProvider } from '@/components/ReactQueryProvider';
 
 export const metadata = {
   title: 'CaliStore',
@@ -26,12 +27,14 @@ export default function RootLayout({ children }: { children: any }) {
       </head>
       <body>
         <Providers>
-          <ToastProvider>
-            <MantineProvider theme={theme}>
-              <HeaderMegaMenu />
-              {children}
-            </MantineProvider>
-          </ToastProvider>
+          <ReactQueryProvider>
+            <ToastProvider>
+              <MantineProvider theme={theme}>
+                <HeaderMegaMenu />
+                {children}
+              </MantineProvider>
+            </ToastProvider>
+          </ReactQueryProvider>
         </Providers>
       </body>
     </html>
