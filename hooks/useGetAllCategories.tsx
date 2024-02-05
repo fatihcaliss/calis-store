@@ -7,6 +7,7 @@ const useGetAllCategories = (initialCategoriesData: ICategory[]) => {
     data: categories,
     error,
     isLoading,
+    isFetching,
   } = useQuery<ICategory[]>({
     queryKey: ['getAllCategories'],
     queryFn: fetchAllCategories,
@@ -14,7 +15,7 @@ const useGetAllCategories = (initialCategoriesData: ICategory[]) => {
     placeholderData: [],
   });
 
-  return { categories, error, isLoading };
+  return { categories, error, isLoading, isFetching };
 };
 
 export default useGetAllCategories;

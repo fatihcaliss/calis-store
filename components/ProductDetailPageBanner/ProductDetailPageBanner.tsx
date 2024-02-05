@@ -29,7 +29,7 @@ export function ProductDetailPageBanner({ productDetailData }: ProductDetailPage
 
   return (
     <Container my="md" fluid>
-      <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
+      <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md" style={{ minHeight: 'fit-content' }}>
         <Card radius="md" withBorder className={classes.imageContainer} p={'xl'}>
           <Carousel
             nextControlProps={{

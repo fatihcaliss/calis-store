@@ -19,3 +19,9 @@ export const fetchProductById = async (productId: string) => {
   const response = await axios.get(`https://api.escuelajs.co/api/v1/products/${productId}`);
   return response.data;
 };
+
+// Function to fetch products
+export const fetchProducts = async () => {
+  const response = await axios.get(`https://api.escuelajs.co/api/v1/products/`);
+  return response.data;
+};
