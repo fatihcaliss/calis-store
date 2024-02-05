@@ -9,11 +9,14 @@ import {
   Container,
   SimpleGrid,
   useMantineTheme,
+  ActionIcon,
 } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
 import { IconShoppingCart } from '@tabler/icons-react';
 import classes from './ProductDetailPageBanner.module.css';
 import { IProduct } from '@/models/product.model';
+import { useCartStore } from '@/store/cart';
+import { useState } from 'react';
 
 interface ProductDetailPageBannerProps {
   productDetailData: IProduct;
@@ -26,6 +29,41 @@ export function ProductDetailPageBanner({ productDetailData }: ProductDetailPage
       <Image src={image} height={220} />
     </Carousel.Slide>
   ));
+
+  const { addToCart, cart, updateCartItemQuantity } = useCartStore();
+  const productInCart = cart.find((item) => item.product.id === productDetailData?.id);
+  const [quantity, setQuantity] = useState(productInCart ? productInCart.quantity : 0);
+
+  const handleIncrement = () => {
+    const updatedQuantity = quantity + 1;
+    setQuantity(updatedQuantity);
+
+    if (productInCart) {
+      updateCartItemQuantity(productDetailData?.id, updatedQuantity);
+    } else {
+      addToCart({
+        id: productDetailData?.id,
+        title: productDetailData?.title,
+        price: productDetailData?.price,
+        description: productDetailData?.description,
+        images: productDetailData?.images,
+        category: productDetailData?.category,
+        creationAt: '',
+        updatedAt: '',
+      });
+    }
+  };
+
+  const handleDecrement = () => {
+    if (quantity > 0) {
+      const updatedQuantity = quantity - 1;
+      setQuantity(updatedQuantity);
+
+      if (productInCart) {
+        updateCartItemQuantity(productDetailData?.id, updatedQuantity);
+      }
+    }
+  };
 
   return (
     <Container my="md" fluid>
@@ -70,17 +108,42 @@ export function ProductDetailPageBanner({ productDetailData }: ProductDetailPage
               </Text>
             </div>
 
-            <Button
-              leftSection={
-                <IconShoppingCart
-                  style={{ width: rem(16), height: rem(16) }}
-                  color={theme.colors.blue[0]}
-                />
-              }
-              radius="md"
-            >
-              Add to cart
-            </Button>
+            {quantity > 0 ? (
+              <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+                <ActionIcon
+                  variant="filled"
+                  aria-label="Decrement"
+                  color="blue"
+                  onClick={handleDecrement}
+                  size={'lg'}
+                >
+                  -
+                </ActionIcon>
+                {quantity}
+                <ActionIcon
+                  variant="filled"
+                  aria-label="Increment"
+                  color="blue"
+                  onClick={handleIncrement}
+                  size={'lg'}
+                >
+                  +
+                </ActionIcon>
+              </div>
+            ) : (
+              <Button
+                leftSection={
+                  <IconShoppingCart
+                    style={{ width: rem(16), height: rem(16) }}
+                    color={theme.colors.blue[0]}
+                  />
+                }
+                radius="md"
+                onClick={handleIncrement}
+              >
+                Add to cart
+              </Button>
+            )}
           </Group>
         </Card>
       </SimpleGrid>

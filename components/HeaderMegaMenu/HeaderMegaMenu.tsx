@@ -41,7 +41,7 @@ export function HeaderMegaMenu() {
             <a href="/products" className={classes.link}>
               Store
             </a>
-            <a href="#" className={classes.link}>
+            <a href="/cart" className={classes.link}>
               <Center inline>
                 <Box component="span" mr={5}>
                   Cart
@@ -51,7 +51,11 @@ export function HeaderMegaMenu() {
                   color={theme.colors.blue[6]}
                 />
                 {totalQuantity > 0 && (
-                  <Badge size="xs" circle style={{ transform: 'translate(-2px,-8px)' }}>
+                  <Badge
+                    size="xs"
+                    circle
+                    style={{ transform: 'translate(-2px,-8px)', minWidth: 'fit-content' }}
+                  >
                     {totalQuantity}
                   </Badge>
                 )}
@@ -87,7 +91,7 @@ export function HeaderMegaMenu() {
           <a href="/products" className={classes.link}>
             Store
           </a>
-          <a href="#" className={classes.link}>
+          <a href="/cart" className={classes.link}>
             <Center inline>
               <Box component="span" mr={5}>
                 Cart
@@ -96,6 +100,15 @@ export function HeaderMegaMenu() {
                 style={{ width: rem(16), height: rem(16) }}
                 color={theme.colors.blue[6]}
               />
+              {totalQuantity > 0 && (
+                <Badge
+                  size="xs"
+                  circle
+                  style={{ transform: 'translate(-2px,-8px)', minWidth: 'fit-content' }}
+                >
+                  {totalQuantity}
+                </Badge>
+              )}
             </Center>
           </a>
 

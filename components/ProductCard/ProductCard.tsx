@@ -5,6 +5,7 @@ import { IProduct } from '@/models/product.model';
 import { useRouter } from 'next/navigation';
 import { IconExternalLink, IconShoppingCart } from '@tabler/icons-react';
 import { useCartStore } from '@/store/cart';
+import { toast } from 'react-toastify';
 
 export function ProductCard({ id, title, price, description, images, category }: IProduct) {
   const router = useRouter();
@@ -76,7 +77,8 @@ export function ProductCard({ id, title, price, description, images, category }:
               />
             }
             radius="md"
-            onClick={() =>
+            onClick={() => {
+              toast.success('You successfully added product to your cart.');
               addToCart({
                 id,
                 title,
@@ -86,8 +88,8 @@ export function ProductCard({ id, title, price, description, images, category }:
                 category,
                 creationAt: '',
                 updatedAt: '',
-              })
-            }
+              });
+            }}
           >
             Add to cart
           </Button>
