@@ -5,11 +5,14 @@ import { useMantineTheme, rem, Skeleton } from '@mantine/core';
 import { ProductCarouselCard } from './ProductCarouselCard';
 import useGetCategoryProducts from '@/hooks/useGetCategoryProducts';
 import classes from './CardsCarousel.module.css';
+import { IProduct } from '@/models/product.model';
 
-export function CardsCarousel() {
-  const { products, isLoading } = useGetCategoryProducts(5);
+interface ICardsCarouselProps {
+  initialData: IProduct[];
+}
 
-  console.log('products', products);
+export function CardsCarousel({ initialData }: ICardsCarouselProps) {
+  const { products, isLoading } = useGetCategoryProducts(5, initialData);
 
   const theme = useMantineTheme();
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
@@ -22,6 +25,8 @@ export function CardsCarousel() {
       )}
     </Carousel.Slide>
   ));
+
+  if (isLoading) return <h1>loasdaıosdfghjaoiısdfjhgias</h1>;
 
   return (
     <Carousel

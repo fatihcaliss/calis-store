@@ -5,10 +5,14 @@ import { useMantineTheme, rem, Skeleton } from '@mantine/core';
 import { CategoryCard } from './CategoryCard';
 import useGetAllCategories from '@/hooks/useGetAllCategories';
 import classes from './CategoriesCarousel.module.css';
+import { ICategory } from '@/models/category.model';
 
-export function CategoriesCarousel() {
-  const { categories, isLoading } = useGetAllCategories();
-  console.log('categories', categories);
+interface ICategoriesCarouselProps {
+  initialCategoriesData: ICategory[];
+}
+
+export function CategoriesCarousel({ initialCategoriesData }: ICategoriesCarouselProps) {
+  const { categories, isLoading } = useGetAllCategories(initialCategoriesData);
   const theme = useMantineTheme();
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
   const slides = categories?.map((item) => (

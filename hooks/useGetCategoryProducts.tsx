@@ -2,7 +2,7 @@ import { IProduct } from '@/models/product.model';
 import { fetchProductsByCategoryId } from '@/services';
 import { useQuery } from '@tanstack/react-query';
 
-const useGetCategoryProducts = (categoryId: number) => {
+const useGetCategoryProducts = (categoryId: number, initialData: IProduct[]) => {
   const {
     data: products,
     error,
@@ -10,6 +10,7 @@ const useGetCategoryProducts = (categoryId: number) => {
   } = useQuery<IProduct[]>({
     queryKey: ['getCategoryProducts'],
     queryFn: () => fetchProductsByCategoryId(categoryId),
+    initialData: initialData,
     placeholderData: [],
   });
 

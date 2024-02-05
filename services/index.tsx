@@ -13,3 +13,9 @@ export const fetchProductsByCategoryId = async (categoryId: number) => {
   );
   return response.data;
 };
+
+// Function to fetch specific product by ID
+export const fetchProductById = async (productId: string) => {
+  const response = await axios.get(`https://api.escuelajs.co/api/v1/products/${productId}`);
+  return response.data;
+};

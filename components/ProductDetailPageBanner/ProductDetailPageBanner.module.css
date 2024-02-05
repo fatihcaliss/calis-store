@@ -26,3 +26,9 @@
         width: rem(16px);
     }
 }
+
+.imageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

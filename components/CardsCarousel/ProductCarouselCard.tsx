@@ -17,10 +17,10 @@ export function ProductCarouselCard({ id, title, price, description, images, cat
           withIndicators
           loop
           nextControlProps={{
-            style: { opacity: 0.5, backgroundColor: 'white' },
+            style: { opacity: 1, backgroundColor: 'white' },
           }}
           previousControlProps={{
-            style: { opacity: 0.5, backgroundColor: 'white' },
+            style: { opacity: 1, backgroundColor: 'white' },
           }}
           classNames={{
             root: classes.carousel,
@@ -49,7 +49,7 @@ export function ProductCarouselCard({ id, title, price, description, images, cat
           </Text>
         </div>
 
-        <Button radius="md">Add to cart</Button>
+        <Button radius="md">Learn More Now!</Button>
       </Group>
     </Card>
   );
