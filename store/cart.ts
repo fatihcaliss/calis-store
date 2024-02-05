@@ -11,6 +11,8 @@ type CartStore = {
   addToCart: (product: IProduct) => void;
   removeFromCart: (productId: number) => void;
   updateCartItemQuantity: (productId: number, quantity: number) => void;
+  selectedCategoryId: number;
+  setSelectedCategoryId: (categoryId: number) => void;
 };
 const LOCAL_STORAGE_KEY = 'cart';
 
@@ -22,6 +24,7 @@ const initializeCartFromLocalStorage = (): CartItem[] => {
 
 export const useCartStore = create<CartStore>((set) => ({
   cart: initializeCartFromLocalStorage(),
+  selectedCategoryId: 0,
   addToCart: (product) => {
     set((state) => {
       const existingItemIndex = state.cart.findIndex((item) => item.product.id === product.id);
@@ -62,5 +65,8 @@ export const useCartStore = create<CartStore>((set) => ({
 
       return { cart: updatedCart };
     });
+  },
+  setSelectedCategoryId: (categoryId) => {
+    set({ selectedCategoryId: categoryId });
   },
 }));

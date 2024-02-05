@@ -2,13 +2,19 @@ import { Paper, Text, Title, Button } from '@mantine/core';
 
 import classes from './CategoryCard.module.css';
 import { useRouter } from 'next/navigation';
+import { useCartStore } from '@/store/cart';
 
 interface CardProps {
   image: string;
   name: string;
+  id: number;
 }
 
-export function CategoryCard({ image, name }: CardProps) {
+export function CategoryCard({ image, name, id }: CardProps) {
+  const { setSelectedCategoryId } = useCartStore();
+  const handleCategoryChange = (newCategoryId: number) => {
+    setSelectedCategoryId(newCategoryId);
+  };
   const router = useRouter();
   return (
     <Paper
@@ -26,7 +32,14 @@ export function CategoryCard({ image, name }: CardProps) {
           {name}
         </Title>
       </div>
-      <Button variant="white" color="dark" onClick={() => router.push('/products')}>
+      <Button
+        variant="white"
+        color="dark"
+        onClick={() => {
+          router.push('/products');
+          handleCategoryChange(id);
+        }}
+      >
         Go to store
       </Button>
     </Paper>

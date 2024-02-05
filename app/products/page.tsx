@@ -1,12 +1,17 @@
 'use client';
 import { ProductsContainer } from '@/components/ProductsContainer/ProductsContainer';
 import { ProductsFilterContainer } from '@/components/ProductsFilterContainer/ProductsFilterContainer';
+import { useCartStore } from '@/store/cart';
 import { Container, Grid } from '@mantine/core';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Page() {
-  const [selectedCategory, setSelectedCategory] = useState<number>(0);
+  const { selectedCategoryId } = useCartStore();
+  const [selectedCategory, setSelectedCategory] = useState<number>(selectedCategoryId);
   const [filterParams, setFilterParams] = useState({});
+  useEffect(() => {
+    setFilterParams({ ['categoryId']: selectedCategoryId });
+  }, []);
 
   return (
     <Container size={'xl'} m={'auto'}>
