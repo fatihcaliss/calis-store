@@ -6,11 +6,47 @@ import { useRouter } from 'next/navigation';
 import { IconExternalLink, IconShoppingCart } from '@tabler/icons-react';
 import { useCartStore } from '@/store/cart';
 import { toast } from 'react-toastify';
+import { useState } from 'react';
 
 export function ProductCard({ id, title, price, description, images, category }: IProduct) {
   const router = useRouter();
   const theme = useMantineTheme();
-  const { addToCart } = useCartStore();
+  const { addToCart, cart, updateCartItemQuantity } = useCartStore();
+  const productInCart = cart.find((item) => item.product.id === id);
+  const [quantity, setQuantity] = useState(productInCart ? productInCart.quantity : 0);
+
+  const handleIncrement = () => {
+    toast.success('You successfully added product to your cart.');
+    const updatedQuantity = quantity + 1;
+    setQuantity(updatedQuantity);
+
+    if (productInCart) {
+      updateCartItemQuantity(id, updatedQuantity);
+    } else {
+      addToCart({
+        id: id,
+        title: title,
+        price: price,
+        description: description,
+        images: images,
+        category: category,
+        creationAt: '',
+        updatedAt: '',
+      });
+    }
+  };
+
+  const handleDecrement = () => {
+    if (quantity > 0) {
+      const updatedQuantity = quantity - 1;
+      setQuantity(updatedQuantity);
+
+      if (productInCart) {
+        updateCartItemQuantity(id, updatedQuantity);
+      }
+    }
+  };
+
   const slides = images?.map((image) => (
     <Carousel.Slide key={image}>
       <Image src={image} height={220} />
@@ -69,30 +105,42 @@ export function ProductCard({ id, title, price, description, images, category }:
           >
             <IconExternalLink style={{ width: '70%', height: '70%' }} stroke={1.5} />
           </ActionIcon>
-          <Button
-            leftSection={
-              <IconShoppingCart
-                style={{ width: rem(16), height: rem(16) }}
-                color={theme.colors.blue[0]}
-              />
-            }
-            radius="md"
-            onClick={() => {
-              toast.success('You successfully added product to your cart.');
-              addToCart({
-                id,
-                title,
-                price,
-                description,
-                images,
-                category,
-                creationAt: '',
-                updatedAt: '',
-              });
-            }}
-          >
-            Add to cart
-          </Button>
+          {quantity > 0 ? (
+            <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+              <ActionIcon
+                variant="filled"
+                aria-label="Decrement"
+                color="blue"
+                onClick={handleDecrement}
+                size={'lg'}
+              >
+                -
+              </ActionIcon>
+              {quantity}
+              <ActionIcon
+                variant="filled"
+                aria-label="Increment"
+                color="blue"
+                onClick={handleIncrement}
+                size={'lg'}
+              >
+                +
+              </ActionIcon>
+            </div>
+          ) : (
+            <Button
+              leftSection={
+                <IconShoppingCart
+                  style={{ width: rem(16), height: rem(16) }}
+                  color={theme.colors.blue[0]}
+                />
+              }
+              radius="md"
+              onClick={handleIncrement}
+            >
+              Add to cart
+            </Button>
+          )}
         </div>
       </Group>
     </Card>
