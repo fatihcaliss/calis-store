@@ -4,7 +4,7 @@ import { fetchAllCategories, fetchProductsByCategoryId } from '@/services';
 import { Container } from '@mantine/core';
 
 export default async function HomePage() {
-  const initialData = await fetchProductsByCategoryId(5);
+  const initialData = await fetchProductsByCategoryId(1);
   const initialCategoriesData = await fetchAllCategories();
   return (
     <>

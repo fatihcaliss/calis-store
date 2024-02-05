@@ -4,7 +4,7 @@ import classes from './ProductsCarouselCard.module.css';
 import { IProduct } from '@/models/product.model';
 import { useRouter } from 'next/navigation';
 
-export function ProductCarouselCard({ id, title, price, description, images, category }: IProduct) {
+export function ProductCarouselCard({ id, title, price, description, images }: IProduct) {
   const router = useRouter();
   const slides = images?.map((image) => (
     <Carousel.Slide key={image}>

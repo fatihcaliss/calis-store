@@ -1,3 +1,4 @@
+import queryMaker from '@/utils/queryMaker';
 import axios from 'axios';
 
 // Function to fetch all categories
@@ -21,7 +22,11 @@ export const fetchProductById = async (productId: string) => {
 };
 
 // Function to fetch products
-export const fetchProducts = async () => {
-  const response = await axios.get(`https://api.escuelajs.co/api/v1/products/`);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const fetchProducts = async (filterParams: Record<string, any>) => {
+  console.log('QUERYYY', queryMaker(filterParams));
+  const response = await axios.get(
+    `https://api.escuelajs.co/api/v1/products/` + queryMaker(filterParams)
+  );
   return response.data;
 };

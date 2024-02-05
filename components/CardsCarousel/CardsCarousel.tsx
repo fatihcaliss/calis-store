@@ -12,7 +12,7 @@ interface ICardsCarouselProps {
 }
 
 export function CardsCarousel({ initialData }: ICardsCarouselProps) {
-  const { products, isLoading } = useGetCategoryProducts(5, initialData);
+  const { products, isLoading } = useGetCategoryProducts(1, initialData);
 
   const theme = useMantineTheme();
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);

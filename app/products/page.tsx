@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 export default function Page() {
   const [selectedCategory, setSelectedCategory] = useState<number>(0);
+  const [filterParams, setFilterParams] = useState({});
 
   return (
     <Container size={'xl'} m={'auto'}>
@@ -14,10 +15,11 @@ export default function Page() {
           <ProductsFilterContainer
             setSelectedCategory={setSelectedCategory}
             selectedCategory={selectedCategory}
+            setFilterParams={setFilterParams}
           />
         </Grid.Col>
         <Grid.Col span={{ base: 12, sm: 9 }}>
-          <ProductsContainer />
+          <ProductsContainer filterParams={filterParams} />
         </Grid.Col>
       </Grid>
     </Container>

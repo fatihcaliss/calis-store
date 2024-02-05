@@ -1,6 +1,7 @@
 import { Paper, Text, Title, Button } from '@mantine/core';
 
 import classes from './CategoryCard.module.css';
+import { useRouter } from 'next/navigation';
 
 interface CardProps {
   image: string;
@@ -8,6 +9,7 @@ interface CardProps {
 }
 
 export function CategoryCard({ image, name }: CardProps) {
+  const router = useRouter();
   return (
     <Paper
       shadow="md"
@@ -24,7 +26,7 @@ export function CategoryCard({ image, name }: CardProps) {
           {name}
         </Title>
       </div>
-      <Button variant="white" color="dark">
+      <Button variant="white" color="dark" onClick={() => router.push('/products')}>
         Go to store
       </Button>
     </Paper>

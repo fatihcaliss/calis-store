@@ -13,7 +13,7 @@ const queryMaker = (params: Record<string, any>): string => {
   }
 
   keys.forEach((key) => {
-    if (params[key] !== '') query += '?' + key + '=' + params[key];
+    if (params[key] !== '') query += '&' + key + '=' + params[key];
   });
 
   return query;

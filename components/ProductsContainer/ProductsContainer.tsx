@@ -1,11 +1,16 @@
 'use client';
 
 import useGetProducts from '@/hooks/useGetProducts';
-import { Container, Skeleton } from '@mantine/core';
+import { Container, Skeleton, Text } from '@mantine/core';
 import { ProductCard } from '../ProductCard/ProductCard';
 
-export function ProductsContainer() {
-  const { productsData, isFetching } = useGetProducts();
+interface IProductsContainerProps {
+  filterParams: object;
+}
+
+export function ProductsContainer({ filterParams }: IProductsContainerProps) {
+  console.log('filterParams', filterParams);
+  const { productsData, isFetching } = useGetProducts(filterParams);
 
   if (isFetching) {
     return (
@@ -22,9 +27,21 @@ export function ProductsContainer() {
       display={'flex'}
       style={{ gap: '2rem', flexWrap: 'wrap', justifyContent: 'center' }}
     >
-      {productsData?.map((item) => {
-        return <ProductCard {...item} />;
-      })}
+      {Array.isArray(productsData) && productsData.length > 0 ? (
+        productsData?.map((item) => {
+          return <ProductCard {...item} key={item.title} />;
+        })
+      ) : (
+        <Text
+          size="36px"
+          fw={900}
+          variant="gradient"
+          gradient={{ from: 'blue', to: 'cyan', deg: 0 }}
+          style={{ padding: '0 2rem 0 2rem' }}
+        >
+          No products matching your criteria were found; please check your filters.
+        </Text>
+      )}
     </Container>
   );
 }
