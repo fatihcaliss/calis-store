@@ -4,10 +4,12 @@ import classes from './ProductCard.module.css';
 import { IProduct } from '@/models/product.model';
 import { useRouter } from 'next/navigation';
 import { IconExternalLink, IconShoppingCart } from '@tabler/icons-react';
+import { useCartStore } from '@/store/cart';
 
 export function ProductCard({ id, title, price, description, images, category }: IProduct) {
   const router = useRouter();
   const theme = useMantineTheme();
+  const { addToCart } = useCartStore();
   const slides = images?.map((image) => (
     <Carousel.Slide key={image}>
       <Image src={image} height={220} />
@@ -74,6 +76,18 @@ export function ProductCard({ id, title, price, description, images, category }:
               />
             }
             radius="md"
+            onClick={() =>
+              addToCart({
+                id,
+                title,
+                price,
+                description,
+                images,
+                category,
+                creationAt: '',
+                updatedAt: '',
+              })
+            }
           >
             Add to cart
           </Button>

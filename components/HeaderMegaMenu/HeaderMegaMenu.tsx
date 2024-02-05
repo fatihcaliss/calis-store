@@ -10,6 +10,7 @@ import {
   ScrollArea,
   rem,
   useMantineTheme,
+  Badge,
 } from '@mantine/core';
 import { MantineLogo } from '@mantinex/mantine-logo';
 import { useDisclosure } from '@mantine/hooks';
@@ -18,12 +19,15 @@ import classes from './HeaderMegaMenu.module.css';
 import { LogInButton } from '../LogInButton/LogInButton';
 import { useSession } from 'next-auth/react';
 import { ThemeChangerIconButton } from '../ThemeChangerIconButton/ThemeChangerIconButton';
+import { useCartStore } from '@/store/cart';
 
 export function HeaderMegaMenu() {
   const { data: session } = useSession();
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
   const theme = useMantineTheme();
-
+  const { cart } = useCartStore();
+  const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
+  console.log('cart', cart);
   return (
     <Box pb={120}>
       <header className={classes.header}>
@@ -46,6 +50,11 @@ export function HeaderMegaMenu() {
                   style={{ width: rem(16), height: rem(16) }}
                   color={theme.colors.blue[6]}
                 />
+                {totalQuantity > 0 && (
+                  <Badge size="xs" circle style={{ transform: 'translate(-2px,-8px)' }}>
+                    {totalQuantity}
+                  </Badge>
+                )}
               </Center>
             </a>
           </Group>

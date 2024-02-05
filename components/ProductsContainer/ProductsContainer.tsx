@@ -9,7 +9,6 @@ interface IProductsContainerProps {
 }
 
 export function ProductsContainer({ filterParams }: IProductsContainerProps) {
-  console.log('filterParams', filterParams);
   const { productsData, isFetching } = useGetProducts(filterParams);
 
   if (isFetching) {
@@ -20,7 +19,6 @@ export function ProductsContainer({ filterParams }: IProductsContainerProps) {
     );
   }
 
-  console.log('productsData', productsData);
   return (
     <Container
       fluid

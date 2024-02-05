@@ -34,7 +34,8 @@
     "next-auth": "^4.24.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-toastify": "^10.0.4"
+    "react-toastify": "^10.0.4",
+    "zustand": "^4.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.23.2",
