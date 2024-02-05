@@ -29,7 +29,7 @@ export function HeaderMegaMenu() {
   const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
   console.log('cart', cart);
   return (
-    <Box pb={120}>
+    <Box pb={120} suppressHydrationWarning={true}>
       <header className={classes.header}>
         <Group justify="space-between" h="100%">
           <MantineLogo size={30} />

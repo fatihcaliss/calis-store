@@ -76,7 +76,6 @@ export function ProductsFilterContainer({
       }}
       key={item.name}
       className={cx(classes.link, { [classes.linkActive]: active === index })}
-      //   style={{ paddingLeft: `calc(${item.order} * var(--mantine-spacing-md))` }}
     >
       {item.name}
     </Button>

@@ -17,6 +17,7 @@ import classes from './ProductDetailPageBanner.module.css';
 import { IProduct } from '@/models/product.model';
 import { useCartStore } from '@/store/cart';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 interface ProductDetailPageBannerProps {
   productDetailData: IProduct;
@@ -35,6 +36,7 @@ export function ProductDetailPageBanner({ productDetailData }: ProductDetailPage
   const [quantity, setQuantity] = useState(productInCart ? productInCart.quantity : 0);
 
   const handleIncrement = () => {
+    toast.success('You successfully added product to your cart.');
     const updatedQuantity = quantity + 1;
     setQuantity(updatedQuantity);
 
