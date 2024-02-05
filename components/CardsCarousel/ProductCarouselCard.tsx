@@ -2,8 +2,10 @@ import { Image, Card, Text, Group, Button } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
 import classes from './ProductsCarouselCard.module.css';
 import { IProduct } from '@/models/product.model';
+import { useRouter } from 'next/navigation';
 
 export function ProductCarouselCard({ id, title, price, description, images, category }: IProduct) {
+  const router = useRouter();
   const slides = images?.map((image) => (
     <Carousel.Slide key={image}>
       <Image src={image} height={220} />
@@ -11,7 +13,7 @@ export function ProductCarouselCard({ id, title, price, description, images, cat
   ));
 
   return (
-    <Card radius="md" withBorder padding="xl">
+    <Card radius="md" withBorder padding="xl" style={{ minHeight: '100%' }}>
       <Card.Section>
         <Carousel
           withIndicators
@@ -38,18 +40,20 @@ export function ProductCarouselCard({ id, title, price, description, images, cat
         </Text>
       </Group>
 
-      <Text fz="sm" c="dimmed" mt="sm" lineClamp={4}>
+      <Text fz="sm" c="dimmed" mt="sm" lineClamp={4} mb={'sm'}>
         {description}
       </Text>
 
-      <Group justify="space-between" mt="md">
+      <Group justify="space-between" mt="auto">
         <div>
           <Text fz="xl" span fw={500} className={classes.price}>
             {price + '$'}
           </Text>
         </div>
 
-        <Button radius="md">Learn More Now!</Button>
+        <Button radius="md" onClick={() => router.push(`product/${id}`)}>
+          Learn More Now!
+        </Button>
       </Group>
     </Card>
   );

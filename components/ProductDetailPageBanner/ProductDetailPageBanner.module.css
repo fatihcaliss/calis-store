@@ -3,6 +3,8 @@
 }
 
 .carousel {
+    width: 100%;
+
     @mixin hover {
         .carouselControls {
             opacity: 1;

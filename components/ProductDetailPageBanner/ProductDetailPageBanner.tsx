@@ -20,14 +20,6 @@ interface ProductDetailPageBannerProps {
 }
 
 export function ProductDetailPageBanner({ productDetailData }: ProductDetailPageBannerProps) {
-  // if (!productDetailData) {
-  //   return (
-  //     <Container size={'lg'}>
-  //       <Skeleton height={'400px'} mt={6} width="100%" radius="xl" />
-  //     </Container>
-  //   );
-  // }
-
   const theme = useMantineTheme();
   const slides = productDetailData?.images?.map((image) => (
     <Carousel.Slide key={image}>
@@ -36,7 +28,7 @@ export function ProductDetailPageBanner({ productDetailData }: ProductDetailPage
   ));
 
   return (
-    <Container my="md" size={'lg'}>
+    <Container my="md" fluid>
       <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
         <Card radius="md" withBorder className={classes.imageContainer} p={'xl'}>
           <Carousel
@@ -67,11 +59,11 @@ export function ProductDetailPageBanner({ productDetailData }: ProductDetailPage
           <Text fz="sm" c="dimmed" mt="sm">
             Category: {productDetailData?.category?.name}
           </Text>
-          <Text fz="sm" c="dimmed" mt="sm">
+          <Text fz="sm" c="dimmed" mt="sm" mb={'xl'}>
             {productDetailData?.description}
           </Text>
 
-          <Group justify="space-between" mt="md">
+          <Group justify="space-between" mt="auto">
             <div>
               <Text fz="xl" span fw={500} className={classes.price}>
                 {productDetailData?.price + '$'}

@@ -26,8 +26,6 @@ export function CardsCarousel({ initialData }: ICardsCarouselProps) {
     </Carousel.Slide>
   ));
 
-  if (isLoading) return <h1>loasdaıosdfghjaoiısdfjhgias</h1>;
-
   return (
     <Carousel
       slideSize={{ base: '100%', sm: '500px' }}
