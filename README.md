@@ -10,7 +10,7 @@ This serves as an illustrative model of a commercial website. Please note that t
 
 - This project was developed using Next.js 14.0.1 in conjunction with the app router system and TypeScript for robust development. The styling of the application was achieved using the Mantine UI library, ensuring a visually appealing and user-friendly interface.
 
-- Authentication in this web application is implemented using next-auth in combination with credentials, offering a secure login experience for users. Upon logging in, users have access to the functionality of the "Place Order" button on the home page.
+- Authentication in this web application is implemented using next-auth in combination with credentials, offering a secure login experience for users.
 
 - All data utilized within the project is sourced from the https://fakeapi.platzi.com/ API, which provides mock data to populate the website's content.
 
@@ -20,14 +20,13 @@ This serves as an illustrative model of a commercial website. Please note that t
 
 - The /products (store) page offers users the ability to filter products in three different ways: by selecting a category, entering a title, or using a price range slider. To optimize performance, title and range filters leverage a debounce function, located in the util folder, eliminating the need for larger libraries like Lodash.
 
-- For efficient data management and state handling, the project relies on the tanstack query library for all network requests. Selected products are managed using Zustand for state management. Moreover, Zustand, in conjunction with the "persist-and-sync" package, ensures that cart data is also stored in localStorage. This approach allows users to preserve their cart data even when switching between different tabs or refreshing the page.
+- For efficient data management and state handling, the project relies on the tanstack query library for all network requests. Selected products are managed using Zustand for state management. Moreover, Zustand, in conjunction with the "persist-and-sync" package, ensures that cart data is also stored in localStorage and cross-tab sharing. This approach allows users to preserve their cart data even when switching between different tabs or refreshing the page.
 
 - The /cart page enables users to manipulate their selected products by increasing, decreasing quantities, or removing items entirely from their shopping cart.
 
 - Lastly, the /checkout page has been created to provide users with the illusion of a successful payment process. It is important to note that this page is static and solely serves for demonstration purposes.
 
 - To enhance the overall user experience and user interface (UI/UX) of the application, the "react-toastify" package has been incorporated.
-
 
 All data is fetched from the [https://fakeapi.platzi.com/](https://fakeapi.platzi.com/) API.
 
@@ -57,6 +56,7 @@ The following packages are used in the project:
 ## Installation
 
 You can install the project packages by running the following command:
+
 - `git clone https://github.com/fatihcaliss/calis-store.git` – clone repository to your local
 - `cd calis-store` – go to calis-store folder
 - `yarn` – install all packages
@@ -69,7 +69,6 @@ You can install the project packages by running the following command:
 - [Storybook](https://storybook.js.org/)
 - [Jest](https://jestjs.io/) setup with [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
 - ESLint setup with [eslint-config-mantine](https://github.com/mantinedev/eslint-config-mantine)
-
 
 ### Testing scripts
 
