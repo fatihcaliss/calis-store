@@ -16,7 +16,7 @@ export function CategoriesCarousel({ initialCategoriesData }: ICategoriesCarouse
   const theme = useMantineTheme();
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
   const slides = categories?.map((item) => (
-    <Carousel.Slide key={item.name}>
+    <Carousel.Slide key={item.id}>
       {isLoading ? (
         <Skeleton width={'350px'} height={'440px'} radius={'md'} />
       ) : (

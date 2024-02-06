@@ -27,7 +27,7 @@ export function ProductsContainer({ filterParams }: IProductsContainerProps) {
     >
       {Array.isArray(productsData) && productsData.length > 0 ? (
         productsData?.map((item) => {
-          return <ProductCard {...item} key={item.title} />;
+          return <ProductCard {...item} key={item.id} />;
         })
       ) : (
         <Text

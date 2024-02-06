@@ -17,7 +17,7 @@ export function CardsCarousel({ initialData }: ICardsCarouselProps) {
   const theme = useMantineTheme();
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
   const slides = products?.map((item) => (
-    <Carousel.Slide key={item.title}>
+    <Carousel.Slide key={item.id}>
       {isLoading ? (
         <Skeleton width={'350px'} height={'440px'} radius={'md'} />
       ) : (

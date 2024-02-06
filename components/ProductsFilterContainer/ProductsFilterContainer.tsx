@@ -74,7 +74,7 @@ export function ProductsFilterContainer({
           return { ...prev, categoryId: item.id };
         });
       }}
-      key={item.name}
+      key={item.id}
       className={cx(classes.link, { [classes.linkActive]: active === index })}
     >
       {item.name}
