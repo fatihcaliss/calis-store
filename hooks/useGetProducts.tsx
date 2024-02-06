@@ -2,8 +2,7 @@ import { IProduct } from '@/models/product.model';
 import { fetchProducts } from '@/services';
 import { useQuery } from '@tanstack/react-query';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const useGetProducts = (filterParams: Record<string, any> | undefined) => {
+const useGetProducts = (filterParams: Record<string, string>) => {
   const {
     data: productsData,
     error,
