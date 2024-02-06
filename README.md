@@ -4,6 +4,8 @@ This serves as an illustrative model of a commercial website. Please note that t
 
 ## :point_right: [Click here to see on browser](https://calis-store.vercel.app/)
 
+![project presentation](https://github.com/fatihcaliss/calis-store/blob/master/public/calis-store-presentation.gif?raw=true)
+
 ## About the Project
 
 - This project was developed using Next.js 14.0.1 in conjunction with the app router system and TypeScript for robust development. The styling of the application was achieved using the Mantine UI library, ensuring a visually appealing and user-friendly interface.
