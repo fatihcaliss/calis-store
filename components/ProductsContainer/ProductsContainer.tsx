@@ -5,7 +5,7 @@ import { Container, Skeleton, Text } from '@mantine/core';
 import { ProductCard } from '../ProductCard/ProductCard';
 
 interface IProductsContainerProps {
-  filterParams: object;
+  filterParams: Record<string, string>;
 }
 
 export function ProductsContainer({ filterParams }: IProductsContainerProps) {
