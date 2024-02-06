@@ -11531,6 +11531,7 @@ __metadata:
     jest-environment-jsdom: "npm:^29.7.0"
     next: "npm:14.0.1"
     next-auth: "npm:^4.24.5"
+    persist-and-sync: "npm:^1.2.1"
     postcss: "npm:^8.4.31"
     postcss-preset-mantine: "npm:1.13.0"
     postcss-simple-vars: "npm:^7.0.1"
@@ -12768,6 +12769,15 @@ __metadata:
   version: 1.2.0
   resolution: "pend@npm:1.2.0"
   checksum: 8a87e63f7a4afcfb0f9f77b39bb92374afc723418b9cb716ee4257689224171002e07768eeade4ecd0e86f1fa3d8f022994219fb45634f2dbd78c6803e452458
+  languageName: node
+  linkType: hard
+
+"persist-and-sync@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "persist-and-sync@npm:1.2.1"
+  peerDependencies:
+    zustand: ^3 || ^4
+  checksum: 850d86f28618a40d3adc6df4498d25d32750c30419afd9b547983dd7171cffc62a39bfed634cc2ca39e66aff70528703ff7a60f20a3a00be7eb689eefb1d2c48
   languageName: node
   linkType: hard
 

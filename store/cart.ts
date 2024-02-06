@@ -1,5 +1,6 @@
 import { IProduct } from '@/models/product.model';
 import { create } from 'zustand';
+import { persistNSync } from 'persist-and-sync';
 
 type CartItem = {
   product: IProduct;
@@ -14,59 +15,54 @@ type CartStore = {
   selectedCategoryId: number;
   setSelectedCategoryId: (categoryId: number) => void;
 };
-const LOCAL_STORAGE_KEY = 'cart';
 
-// initial cart data from local storage
-const initializeCartFromLocalStorage = (): CartItem[] => {
-  const localStorageCart = localStorage.getItem(LOCAL_STORAGE_KEY);
-  return localStorageCart ? JSON.parse(localStorageCart) : [];
+const initialState: CartStore = {
+  cart: [],
+  selectedCategoryId: 0,
+  addToCart: () => {},
+  removeFromCart: () => {},
+  updateCartItemQuantity: () => {},
+  setSelectedCategoryId: () => {},
 };
 
-export const useCartStore = create<CartStore>((set) => ({
-  cart: initializeCartFromLocalStorage(),
-  selectedCategoryId: 0,
-  addToCart: (product) => {
-    set((state) => {
-      const existingItemIndex = state.cart.findIndex((item) => item.product.id === product.id);
+export const useCartStore = create<CartStore>(
+  persistNSync(
+    (set) => ({
+      ...initialState,
+      addToCart: (product) => {
+        set((state) => {
+          const existingItemIndex = state.cart.findIndex((item) => item.product.id === product.id);
 
-      if (existingItemIndex !== -1) {
-        state.cart[existingItemIndex].quantity += 1;
-      } else {
-        state.cart.push({ product, quantity: 1 });
-      }
+          if (existingItemIndex !== -1) {
+            state.cart[existingItemIndex].quantity += 1;
+          } else {
+            state.cart.push({ product, quantity: 1 });
+          }
 
-      // Update local storage with the updated cart
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state.cart));
-
-      return { cart: [...state.cart] };
-    });
-  },
-  removeFromCart: (productId) => {
-    set((state) => {
-      const updatedCart = state.cart.filter((item) => item.product.id !== productId);
-
-      // Update local storage with the updated cart
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedCart));
-
-      return { cart: updatedCart };
-    });
-  },
-  updateCartItemQuantity: (productId, quantity) => {
-    set((state) => {
-      const updatedCart = state.cart.map((item) => {
-        if (item.product.id === productId) {
-          return { ...item, quantity };
-        }
-        return item;
-      });
-
-      // Update local storage with the updated cart
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedCart));
-
-      return { cart: updatedCart };
-    });
-  },
-  setSelectedCategoryId: (categoryId) => {
-    set({ selectedCategoryId: categoryId });
-  },
-}));
+          return { cart: [...state.cart] };
+        });
+      },
+      removeFromCart: (productId) => {
+        set((state) => {
+          const updatedCart = state.cart.filter((item) => item.product.id !== productId);
+          return { cart: updatedCart };
+        });
+      },
+      updateCartItemQuantity: (productId, quantity) => {
+        set((state) => {
+          const updatedCart = state.cart.map((item) => {
+            if (item.product.id === productId) {
+              return { ...item, quantity };
+            }
+            return item;
+          });
+          return { cart: updatedCart };
+        });
+      },
+      setSelectedCategoryId: (categoryId) => {
+        set({ selectedCategoryId: categoryId });
+      },
+    }),
+    { name: 'localCartData' }
+  )
+);
