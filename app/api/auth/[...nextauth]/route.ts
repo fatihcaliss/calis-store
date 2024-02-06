@@ -33,7 +33,7 @@ const handler = NextAuth({
           });
           const user = await response.json();
 
-          console.log('user', user);
+          // console.log('user', user);
 
           if (user.id) {
             return user;

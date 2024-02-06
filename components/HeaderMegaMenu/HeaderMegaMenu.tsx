@@ -1,7 +1,7 @@
 'use client';
 import {
   Group,
-  Button,
+  // Button,
   Divider,
   Center,
   Box,
@@ -17,12 +17,12 @@ import { useDisclosure } from '@mantine/hooks';
 import { IconShoppingCart } from '@tabler/icons-react';
 import classes from './HeaderMegaMenu.module.css';
 import { LogInButton } from '../LogInButton/LogInButton';
-import { useSession } from 'next-auth/react';
+// import { useSession } from 'next-auth/react';
 import { ThemeChangerIconButton } from '../ThemeChangerIconButton/ThemeChangerIconButton';
 import { useCartStore } from '@/store/cart';
 
 export function HeaderMegaMenu() {
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
   const theme = useMantineTheme();
   const { cart } = useCartStore();
@@ -65,7 +65,7 @@ export function HeaderMegaMenu() {
 
           <Group visibleFrom="sm">
             <LogInButton />
-            {!session?.user?.email && <Button>Sign up</Button>}
+            {/* {!session?.user?.email && <Button>Sign up</Button>} */}
             <ThemeChangerIconButton />
           </Group>
 
@@ -116,7 +116,7 @@ export function HeaderMegaMenu() {
 
           <Group justify="center" grow pb="xl" px="md">
             <LogInButton />
-            {!session?.user?.email && <Button>Sign up</Button>}
+            {/* {!session?.user?.email && <Button>Sign up</Button>} */}
           </Group>
           <Divider my="sm" />
 
