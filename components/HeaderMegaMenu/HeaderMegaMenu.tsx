@@ -20,6 +20,7 @@ import { LogInButton } from '../LogInButton/LogInButton';
 // import { useSession } from 'next-auth/react';
 import { ThemeChangerIconButton } from '../ThemeChangerIconButton/ThemeChangerIconButton';
 import { useCartStore } from '@/store/cart';
+import Link from 'next/link';
 
 export function HeaderMegaMenu() {
   // const { data: session } = useSession();
@@ -35,13 +36,13 @@ export function HeaderMegaMenu() {
           <MantineLogo size={30} />
 
           <Group h="100%" gap={0} visibleFrom="sm">
-            <a href="/" className={classes.link}>
+            <Link href="/" className={classes.link}>
               Home
-            </a>
-            <a href="/products" className={classes.link}>
+            </Link>
+            <Link href="/products" className={classes.link}>
               Store
-            </a>
-            <a href="/cart" className={classes.link}>
+            </Link>
+            <Link href="/cart" className={classes.link}>
               <Center inline>
                 <Box component="span" mr={5}>
                   Cart
@@ -60,7 +61,7 @@ export function HeaderMegaMenu() {
                   </Badge>
                 )}
               </Center>
-            </a>
+            </Link>
           </Group>
 
           <Group visibleFrom="sm">
@@ -85,13 +86,13 @@ export function HeaderMegaMenu() {
         <ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">
           <Divider my="sm" />
 
-          <a href="/" className={classes.link}>
+          <Link href="/" className={classes.link}>
             Home
-          </a>
-          <a href="/products" className={classes.link}>
+          </Link>
+          <Link href="/products" className={classes.link}>
             Store
-          </a>
-          <a href="/cart" className={classes.link}>
+          </Link>
+          <Link href="/cart" className={classes.link}>
             <Center inline>
               <Box component="span" mr={5}>
                 Cart
@@ -110,7 +111,7 @@ export function HeaderMegaMenu() {
                 </Badge>
               )}
             </Center>
-          </a>
+          </Link>
 
           <Divider my="sm" />
 

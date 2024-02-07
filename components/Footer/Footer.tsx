@@ -1,6 +1,7 @@
 import { Container, Group, ActionIcon, rem, Text } from '@mantine/core';
 import { IconBrandGithub } from '@tabler/icons-react';
 import classes from './Footer.module.css';
+import Link from 'next/link';
 
 export function Footer() {
   return (
@@ -8,9 +9,9 @@ export function Footer() {
       <Container className={classes.inner}>
         <Text c="dimmed" size="sm">
           © 2023{' '}
-          <a href="https://www.linkedin.com/in/fatihcaliss/" style={{ color: 'inherit' }}>
+          <Link href="https://www.linkedin.com/in/fatihcaliss/" style={{ color: 'inherit' }}>
             fatihcalis
-          </a>
+          </Link>
           . All rights reserved.
         </Text>
         <Group gap={0} className={classes.links} justify="flex-end" wrap="nowrap">
