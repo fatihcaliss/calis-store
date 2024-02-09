@@ -10,7 +10,6 @@ import {
   SimpleGrid,
   useMantineTheme,
   ActionIcon,
-  Skeleton,
 } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
 import { IconShoppingCart } from '@tabler/icons-react';
@@ -19,17 +18,13 @@ import { IProduct } from '@/models/product.model';
 import { useCartStore } from '@/store/cart';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import useGetProductDetail from '@/hooks/useGetProductDetail';
-import ProductNotFound from '../ProductNotFound/ProductNotFound';
 
 interface ProductDetailPageBannerProps {
-  initialData: IProduct;
-  initialId: string;
+  productDetailData: IProduct;
 }
 
-export function ProductDetailPageBanner({ initialData, initialId }: ProductDetailPageBannerProps) {
+export function ProductDetailPageBanner({ productDetailData }: ProductDetailPageBannerProps) {
   const theme = useMantineTheme();
-  const { productDetailData, isFetching, error } = useGetProductDetail(initialId, initialData);
 
   const slides = productDetailData?.images?.map((image) => (
     <Carousel.Slide key={image}>
@@ -72,18 +67,6 @@ export function ProductDetailPageBanner({ initialData, initialId }: ProductDetai
       }
     }
   };
-
-  if (isFetching) {
-    return (
-      <Container size={'lg'}>
-        <Skeleton height={'400px'} mt={6} width="100%" radius="xl" />
-      </Container>
-    );
-  }
-
-  if (initialData === undefined || error) {
-    return <ProductNotFound />;
-  }
 
   return (
     <Container my="md" fluid>
