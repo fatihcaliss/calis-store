@@ -61,21 +61,21 @@ export function ProductsFilterContainer({
     );
   }
   const allCategories = [{ id: 0, name: 'All' }, ...categories];
-  const items = allCategories.map((item, index) => (
+  const items = allCategories.map((item) => (
     <Button
       variant="transparent"
       fullWidth
       justify="start"
       onClick={(event) => {
         event.preventDefault();
-        setActive(index);
+        setActive(item.id);
         setSelectedCategory(item.id);
         setFilterParams((prev) => {
           return { ...prev, categoryId: item.id };
         });
       }}
       key={item.id}
-      className={cx(classes.link, { [classes.linkActive]: active === index })}
+      className={cx(classes.link, { [classes.linkActive]: active === item.id })}
     >
       {item.name}
     </Button>
