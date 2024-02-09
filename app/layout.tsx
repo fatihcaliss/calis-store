@@ -8,6 +8,7 @@ import ToastProvider from '@/components/ToastProvider/toast.provider';
 import { HeaderMegaMenu } from '@/components/HeaderMegaMenu/HeaderMegaMenu';
 import { ReactQueryProvider } from '@/components/ReactQueryProvider';
 import { Footer } from '@/components/Footer/Footer';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const metadata = {
   title: 'CaliStore',
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: { children: any }) {
             </ToastProvider>
           </ReactQueryProvider>
         </Providers>
+        <SpeedInsights />
       </body>
     </html>
   );

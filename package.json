@@ -27,6 +27,7 @@
     "@next/bundle-analyzer": "^14.0.1",
     "@tabler/icons-react": "^2.40.0",
     "@tanstack/react-query": "^5.18.1",
+    "@vercel/speed-insights": "^1.0.9",
     "axios": "^1.6.7",
     "embla-carousel-autoplay": "^7.1.0",
     "embla-carousel-react": "^8.0.0-rc22",
