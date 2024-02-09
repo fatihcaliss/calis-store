@@ -35,7 +35,7 @@ export function ProductsContainer({ filterParams }: IProductsContainerProps) {
           fw={900}
           variant="gradient"
           gradient={{ from: 'blue', to: 'cyan', deg: 0 }}
-          style={{ padding: '0 2rem 0 2rem' }}
+          style={{ padding: '0 2rem 2rem 2rem' }}
         >
           No products matching your criteria were found; please check your filters.
         </Text>
